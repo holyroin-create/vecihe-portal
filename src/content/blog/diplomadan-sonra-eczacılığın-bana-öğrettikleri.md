@@ -1,6 +1,6 @@
 ---
 title: "Diplomadan Sonra: Eczacılığın Bana Öğrettikleri"
-category: Eczacılık & Kariyer
+category: Sağlık Okuryazarlığı
 dateLabel: Haziran 2026
 pubDate: 2026-06-01
 readTime: 5 dk
