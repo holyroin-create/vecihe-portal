@@ -8,7 +8,7 @@ excerpt: Mezuniyetle birlikte öğrendiğim, ders kitaplarında olmayan şeyler.
   Tezgâhın arkasında geçen ilk dönemin dürüst bir özeti.
 accent: "#7a5a2e"
 cover: /images/img_7229.jpeg
-draft: true
+draft: false
 ---
 <div class="disclaimer">*Bu yazı kişisel deneyimlerimi ve mesleğe dair kendi gözlemlerimi içerir. Mesleki veya kariyer tavsiyesi olarak değil, bir eczacının yolculuğundan samimi bir paylaşım olarak okunmalıdır.*</div>
 <p>Eczacılık fakültesinde yıllar boyunca ilaçları, etken maddeleri, dozları ve etkileşimleri öğrendim. Sınavlara hazırlandım, stajlar yaptım, mesleğe dair bilmem gereken her şeyi öğrendiğimi düşündüm.
