@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
 
-// site: Netlify'da site adını "vecihebengisu" yaparsanız adres aşağıdaki gibi olur.
-// Kendi alan adınızı bağladığınızda bu satırı onunla değiştirin (SEO/sitemap için).
+// site: yayındaki gerçek alan adı (SEO, sitemap ve paylaşım önizlemeleri için).
 export default defineConfig({
-  site: 'https://vecihebengisu.netlify.app',
+  site: 'https://eczacivecihebengisu.blog',
   trailingSlash: 'ignore',
   build: { inlineStylesheets: 'always' },
 });
