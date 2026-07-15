@@ -1,0 +1,213 @@
+---
+/* Özgün, telifsiz SVG illüstrasyon seti — eczacılık/botanik çizgi dili.
+   Tüm renkler tasarım değişkenlerinden gelir; her sayfada tutarlı görünür. */
+interface Props { name: string; class?: string; style?: string; }
+const { name, class: cls = '', style } = Astro.props;
+---
+<span class={`illust-wrap ${cls}`} style={style}>
+{name === 'hero' && (
+<svg class="illust" viewBox="0 0 420 340" role="img" aria-label="Havan ve bitki illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="170" r="150" fill="var(--mist)"/>
+  <circle cx="210" cy="170" r="150" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-dasharray="3 7"/>
+  <!-- havan -->
+  <path d="M120 190 h180 c0 55 -40 90 -90 90 s-90 -35 -90 -90z" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+  <path d="M112 182 h196 v16 h-196z" rx="8" fill="var(--green)"/>
+  <rect x="112" y="178" width="196" height="18" rx="9" fill="var(--green)"/>
+  <path d="M150 236 q60 26 120 0" fill="none" stroke="var(--sage)" stroke-width="2.5"/>
+  <!-- tokmak -->
+  <g transform="rotate(-28 265 130)">
+    <rect x="255" y="60" width="22" height="110" rx="11" fill="var(--paper-2)" stroke="var(--copper)" stroke-width="3"/>
+    <ellipse cx="266" cy="170" rx="20" ry="14" fill="var(--copper)"/>
+  </g>
+  <!-- bitki dalı -->
+  <path d="M150 172 q-14 -70 24 -118" fill="none" stroke="var(--green-2)" stroke-width="3" stroke-linecap="round"/>
+  <g fill="var(--green-2)">
+    <path d="M156 132 q-26 -8 -30 -30 q24 2 30 30z"/>
+    <path d="M152 100 q-24 -12 -24 -34 q22 6 24 34z"/>
+    <path d="M160 132 q24 -14 22 -38 q-24 10 -22 38z" fill="var(--sage)"/>
+    <path d="M162 96 q20 -18 14 -40 q-22 14 -14 40z" fill="var(--sage)"/>
+  </g>
+  <circle cx="176" cy="52" r="7" fill="var(--copper)"/>
+  <!-- kanıt rozeti -->
+  <g transform="translate(300 226)">
+    <circle r="26" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+    <path d="M-10 0 l7 8 l14 -16" fill="none" stroke="var(--green-2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+)}
+{name === 'about' && (
+<svg class="illust" viewBox="0 0 420 340" role="img" aria-label="Eczacı ve kaynak kitaplar illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <rect x="60" y="40" width="300" height="260" rx="18" fill="var(--mist)"/>
+  <!-- kitap yığını -->
+  <g stroke-width="3">
+    <rect x="96" y="216" width="150" height="26" rx="6" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="108" y="188" width="128" height="26" rx="6" fill="var(--sage)" stroke="var(--green)"/>
+    <rect x="100" y="160" width="142" height="26" rx="6" fill="var(--paper-2)" stroke="var(--green)"/>
+    <line x1="128" y1="229" x2="216" y2="229" stroke="var(--sage)"/>
+    <line x1="126" y1="173" x2="212" y2="173" stroke="var(--sage)"/>
+  </g>
+  <!-- kitaplardan yükselen filiz -->
+  <path d="M170 158 q0 -44 0 -62" stroke="var(--green-2)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M170 122 q-22 -4 -28 -26 q22 2 28 26z" fill="var(--green-2)"/>
+  <path d="M170 106 q22 -8 24 -30 q-22 6 -24 30z" fill="var(--sage)"/>
+  <circle cx="170" cy="90" r="6" fill="var(--copper)"/>
+  <!-- rozet: caduceus benzeri değil, Rx + yaprak -->
+  <g transform="translate(296 128)">
+    <circle r="52" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+    <text x="0" y="14" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="44" fill="var(--green)">Rx</text>
+  </g>
+  <path d="M296 196 v46" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M296 220 q-20 -4 -26 -24 q20 2 26 24z" fill="var(--copper)"/>
+  <!-- alt bant -->
+  <rect x="96" y="258" width="228" height="12" rx="6" fill="var(--sage)" opacity=".55"/>
+</svg>
+)}
+{name === 'blog' && (
+<svg class="illust" viewBox="0 0 420 240" role="img" aria-label="Açık kitap ve yaprak ayraç illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="210" cy="196" rx="160" ry="22" fill="var(--mist)"/>
+  <path d="M210 70 q-70 -30 -140 -8 v120 q70 -22 140 8 q70 -30 140 -8 v-120 q-70 -22 -140 8z" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+  <path d="M210 70 v120" stroke="var(--green)" stroke-width="3"/>
+  <g stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M96 92 q56 -14 100 2"/><path d="M96 116 q56 -14 100 2"/><path d="M96 140 q56 -14 100 2"/>
+    <path d="M224 94 q56 -16 100 -2"/><path d="M224 118 q56 -16 100 -2"/><path d="M224 142 q56 -16 100 -2"/>
+  </g>
+  <path d="M240 64 v58 l12 -10 l12 10 v-62" fill="var(--copper)"/>
+  <path d="M330 40 q18 -22 40 -20 q-4 24 -28 28 q-8 2 -12 -8z" fill="var(--green-2)"/>
+</svg>
+)}
+{name === 'ask' && (
+<svg class="illust" viewBox="0 0 420 260" role="img" aria-label="Soru-cevap konuşma balonları illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="130" r="112" fill="var(--mist)"/>
+  <g>
+    <rect x="86" y="58" width="170" height="86" rx="20" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+    <path d="M116 142 l-8 26 l30 -24z" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="171" y="118" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="46" fill="var(--green)">?</text>
+  </g>
+  <g>
+    <rect x="196" y="128" width="150" height="76" rx="18" fill="var(--green)"/>
+    <path d="M312 202 l10 24 l-32 -22z" fill="var(--green)"/>
+    <path d="M244 166 l10 12 l24 -26" fill="none" stroke="#EAF2EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <circle cx="330" cy="72" r="7" fill="var(--copper)"/>
+  <circle cx="352" cy="94" r="4.5" fill="var(--sage)"/>
+  <path d="M64 176 q-16 12 -14 32 q20 -2 26 -20 q2 -8 -12 -12z" fill="var(--green-2)"/>
+</svg>
+)}
+{name === 'routine' && (
+<svg class="illust" viewBox="0 0 420 260" role="img" aria-label="Cilt bakım şişeleri illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="210" cy="216" rx="164" ry="20" fill="var(--mist)"/>
+  <!-- damlalıklı serum -->
+  <g stroke-width="3">
+    <rect x="120" y="120" width="52" height="92" rx="12" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="136" y="96" width="20" height="26" rx="5" fill="var(--sage)" stroke="var(--green)"/>
+    <path d="M146 66 v30" stroke="var(--green)" stroke-linecap="round"/>
+    <circle cx="146" cy="60" r="9" fill="var(--copper)"/>
+    <rect x="130" y="150" width="32" height="34" rx="6" fill="var(--mist)" stroke="var(--sage)"/>
+  </g>
+  <!-- pompa şişe -->
+  <g stroke-width="3">
+    <rect x="200" y="96" width="60" height="116" rx="14" fill="var(--green)"/>
+    <rect x="216" y="72" width="28" height="26" rx="5" fill="var(--paper-2)" stroke="var(--green)"/>
+    <path d="M230 72 v-14 h26" fill="none" stroke="var(--green)" stroke-linecap="round"/>
+    <rect x="210" y="130" width="40" height="44" rx="7" fill="#EAF2EB" opacity=".92"/>
+  </g>
+  <!-- kavanoz -->
+  <g stroke-width="3">
+    <rect x="284" y="150" width="66" height="62" rx="14" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="278" y="134" width="78" height="20" rx="9" fill="var(--copper)"/>
+  </g>
+  <!-- damla ve yaprak -->
+  <path d="M320 84 q16 22 0 34 q-16 -12 0 -34z" fill="var(--green-2)"/>
+  <path d="M74 120 q-14 16 -8 36 q20 -6 22 -26 q0 -8 -14 -10z" fill="var(--sage)"/>
+</svg>
+)}
+{name === 'calendar' && (
+<svg class="illust" viewBox="0 0 420 260" role="img" aria-label="Mevsim takvimi illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <rect x="92" y="56" width="236" height="168" rx="16" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+  <rect x="92" y="56" width="236" height="42" rx="16" fill="var(--green)"/>
+  <rect x="92" y="80" width="236" height="18" fill="var(--green)"/>
+  <g fill="var(--mist)" stroke="var(--sage)" stroke-width="2">
+    <rect x="116" y="118" width="34" height="28" rx="6"/><rect x="162" y="118" width="34" height="28" rx="6"/>
+    <rect x="208" y="118" width="34" height="28" rx="6" fill="var(--copper)" stroke="var(--copper)"/>
+    <rect x="254" y="118" width="34" height="28" rx="6"/>
+    <rect x="116" y="158" width="34" height="28" rx="6"/><rect x="162" y="158" width="34" height="28" rx="6"/>
+    <rect x="208" y="158" width="34" height="28" rx="6"/><rect x="254" y="158" width="34" height="28" rx="6"/>
+  </g>
+  <circle cx="132" cy="56" r="7" fill="var(--copper)"/><circle cx="288" cy="56" r="7" fill="var(--copper)"/>
+  <!-- güneş & yaprak -->
+  <g stroke="var(--copper)" stroke-width="3" stroke-linecap="round">
+    <circle cx="356" cy="84" r="16" fill="var(--paper-2)"/>
+    <path d="M356 56 v-8 M356 112 v8 M328 84 h-8 M384 84 h8 M336 64 l-6 -6 M376 104 l6 6 M336 104 l-6 6 M376 64 l6 -6"/>
+  </g>
+  <path d="M64 176 q-16 18 -10 40 q22 -6 26 -28 q0 -10 -16 -12z" fill="var(--green-2)"/>
+</svg>
+)}
+{name === 'products' && (
+<svg class="illust" viewBox="0 0 420 260" role="img" aria-label="Eczane rafı illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <rect x="70" y="196" width="280" height="10" rx="5" fill="var(--green)"/>
+  <rect x="70" y="118" width="280" height="8" rx="4" fill="var(--sage)"/>
+  <!-- üst raf küçük şişeler -->
+  <g stroke-width="2.5">
+    <rect x="96" y="76" width="34" height="42" rx="8" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="104" y="66" width="18" height="12" rx="4" fill="var(--copper)"/>
+    <rect x="148" y="84" width="30" height="34" rx="7" fill="var(--sage)" stroke="var(--green)"/>
+    <rect x="192" y="70" width="36" height="48" rx="8" fill="var(--paper-2)" stroke="var(--green)"/>
+    <line x1="200" y1="92" x2="220" y2="92" stroke="var(--copper)"/>
+    <rect x="244" y="82" width="30" height="36" rx="7" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="288" y="74" width="34" height="44" rx="8" fill="var(--mist)" stroke="var(--green)"/>
+  </g>
+  <!-- alt raf -->
+  <g stroke-width="2.5">
+    <rect x="104" y="146" width="44" height="50" rx="9" fill="var(--green)"/>
+    <rect x="114" y="158" width="24" height="20" rx="4" fill="#EAF2EB"/>
+    <rect x="164" y="152" width="38" height="44" rx="8" fill="var(--paper-2)" stroke="var(--green)"/>
+    <rect x="172" y="142" width="22" height="12" rx="4" fill="var(--sage)"/>
+    <rect x="218" y="156" width="34" height="40" rx="8" fill="var(--copper)"/>
+    <rect x="266" y="148" width="42" height="48" rx="9" fill="var(--paper-2)" stroke="var(--green)"/>
+    <line x1="276" y1="168" x2="298" y2="168" stroke="var(--sage)"/>
+    <line x1="276" y1="180" x2="298" y2="180" stroke="var(--sage)"/>
+  </g>
+</svg>
+)}
+{name === 'tools' && (
+<svg class="illust" viewBox="0 0 420 300" role="img" aria-label="Sağlık hesaplayıcıları illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="150" r="128" fill="var(--mist)"/>
+  <!-- baskül -->
+  <g stroke-width="3">
+    <rect x="96" y="120" width="130" height="130" rx="18" fill="var(--paper-2)" stroke="var(--green)"/>
+    <path d="M126 150 a35 35 0 0 1 70 0" fill="none" stroke="var(--sage)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M161 150 l16 -22" stroke="var(--copper)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="161" cy="150" r="6" fill="var(--green)"/>
+    <rect x="126" y="186" width="70" height="30" rx="8" fill="var(--mist)" stroke="var(--sage)"/>
+  </g>
+  <!-- mezura -->
+  <g stroke-width="3">
+    <circle cx="292" cy="112" r="44" fill="var(--copper)"/>
+    <circle cx="292" cy="112" r="26" fill="var(--paper-2)" stroke="#FFF7F0"/>
+    <path d="M292 156 q0 34 -34 40 l-40 4" fill="none" stroke="var(--copper)" stroke-linecap="round" stroke-dasharray="1 9"/>
+  </g>
+  <!-- hesap makinesi -->
+  <g stroke-width="3">
+    <rect x="256" y="168" width="86" height="104" rx="12" fill="var(--green)"/>
+    <rect x="268" y="180" width="62" height="24" rx="5" fill="#EAF2EB"/>
+    <g fill="var(--sage)">
+      <rect x="268" y="214" width="16" height="14" rx="4"/><rect x="291" y="214" width="16" height="14" rx="4"/><rect x="314" y="214" width="16" height="14" rx="4"/>
+      <rect x="268" y="236" width="16" height="14" rx="4"/><rect x="291" y="236" width="16" height="14" rx="4"/><rect x="314" y="236" width="16" height="14" rx="4" fill="var(--copper)"/>
+    </g>
+  </g>
+  <path d="M76 96 q-14 16 -8 36 q20 -6 22 -26 q0 -8 -14 -10z" fill="var(--green-2)"/>
+</svg>
+)}
+{name === 'contact' && (
+<svg class="illust" viewBox="0 0 420 240" role="img" aria-label="Zarf ve filiz illüstrasyonu" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="120" r="100" fill="var(--mist)"/>
+  <rect x="120" y="84" width="180" height="112" rx="14" fill="var(--paper-2)" stroke="var(--green)" stroke-width="3"/>
+  <path d="M124 92 l86 66 l86 -66" fill="none" stroke="var(--green)" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="300" cy="86" r="16" fill="var(--copper)"/>
+  <path d="M300 80 v12 M294 86 h12" stroke="#FFF7F0" stroke-width="3" stroke-linecap="round"/>
+  <path d="M96 170 q-16 14 -12 36 q22 -4 26 -26 q0 -8 -14 -10z" fill="var(--green-2)"/>
+  <path d="M330 156 q18 8 20 30 q-22 2 -30 -18 q-2 -8 10 -12z" fill="var(--sage)"/>
+</svg>
+)}
+
+</span>

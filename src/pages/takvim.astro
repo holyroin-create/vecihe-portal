@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+import { getCollection } from 'astro:content';
+const AY_IDS = ['ocak','subat','mart','nisan','mayis','haziran','temmuz','agustos','eylul','ekim','kasim','aralik'];
+const takvim = (await getCollection('takvim'))
+  .sort((a, b) => AY_IDS.indexOf(a.id) - AY_IDS.indexOf(b.id));
+const nowId = AY_IDS[new Date().getMonth()];
+---
+<Base title="Mevsimsel Sağlık & Doğa Takvimi" activeNav="takvim">
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Ajanda</p>
+          <h2>Mevsimsel sağlık &amp; doğa takvimi</h2>
+          <p>Aya göre polen durumu, mevsiminde tüketilecek sebze-meyveler ve önemli dünya sağlık günleri.
+          İçinde bulunduğunuz ay vurgulanır.</p>
+        </div>
+        <Illust name="calendar" class="band-art" style="max-width:250px;margin:0" />
+      </div>
+      <div class="grid three">
+        {takvim.map(t => (
+          <div class={`month-card ${t.id === nowId ? 'current' : ''}`} id={t.id}>
+            <h3>{t.data.ay}{t.id === nowId ? ' · bu ay' : ''}</h3>
+            <div class="row"><b>Polen:</b><span>{t.data.polen}</span></div>
+            <div class="row"><b>Mevsiminde:</b><span>{t.data.mevsimsel.map(m => <span class="pill">{m}</span>)}</span></div>
+            {t.data.saglikGunleri.length > 0 && (
+              <div class="row"><b>Sağlık günleri:</b><span>{t.data.saglikGunleri.map(g => `${g.gun}${g.ad ? ' — ' + g.ad : ''}`).join(' · ')}</span></div>
+            )}
+            {t.data.not && <div class="row"><b>Not:</b><span>{t.data.not}</span></div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

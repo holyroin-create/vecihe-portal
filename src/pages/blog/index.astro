@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import Illust from '../../components/Illust.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const cats = ['Tümü', ...new Set(posts.map(p => p.data.category))];
+---
+<Base title="Yazılar" activeNav="blog">
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Arşiv</p>
+          <h2>Tüm yazılar</h2>
+          <p>Cilt bakımı, sağlık okuryazarlığı, eczacılık ve yaşam üzerine — kaynağı belli, sade yazılar.</p>
+        </div>
+        <Illust name="blog" class="band-art" style="max-width:250px;margin:0" />
+      </div>
+      <div class="chips" id="chips">
+        {cats.map((c, i) => <button class={`chip ${i === 0 ? 'active' : ''}`} data-cat={c}>{c}</button>)}
+      </div>
+      <div class="grid three" id="post-grid">
+        {posts.map(p => (
+          <a class="card" href={`/blog/${p.id}`} data-cat={p.data.category}>
+            <div class="card-top" style={`background:linear-gradient(90deg, ${p.data.accent}, ${p.data.accent}55)`}></div>
+            <span class="cat" style={`color:${p.data.accent}`}>{p.data.category}</span>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.excerpt}</p>
+            <span class="meta">{p.data.dateLabel} · {p.data.readTime} okuma</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById('chips')?.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest('.chip') as HTMLElement | null;
+      if (!btn) return;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll<HTMLElement>('#post-grid .card').forEach(card => {
+        card.style.display = (cat === 'Tümü' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  </script>
+</Base>

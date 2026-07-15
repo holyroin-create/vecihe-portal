@@ -1,0 +1,277 @@
+/* Vecihe Bengisu — Sağlık & Yaşam Portalı
+   Tasarım dili mevcut siteden taşındı: Fraunces + Inter, kağıt-yeşil palet. */
+:root{
+  --paper:#F1F4EF; --paper-2:#FBFCFA; --mist:#E2EAE1;
+  --ink:#192219; --ink-soft:#4A574B;
+  --green:#1F4A37; --green-2:#2E6B4F; --sage:#9DB6A4;
+  --line:#CBD7CA; --copper:#B36A3C;
+  --shadow:0 1px 2px rgba(25,34,25,.04),0 12px 32px -16px rgba(25,34,25,.18);
+  --maxw:1120px; --rad:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.12;margin:0;color:var(--ink)}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green-2);display:inline-flex;align-items:center;gap:8px;margin:0}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--green-2);display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;
+  font-family:"Inter",sans-serif;font-size:15px;font-weight:600;border-radius:100px;
+  padding:13px 24px;text-decoration:none;transition:transform .15s ease,background .15s ease}
+.btn-primary{background:var(--green);color:#F4F7F2}
+.btn-primary:hover{background:var(--green-2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--green);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--green-2);background:var(--paper-2)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(241,244,239,.86);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .mono{width:42px;height:42px;border-radius:11px;background:var(--green);color:#F4F7F2;
+  display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:19px}
+.brand b{font-family:"Fraunces",serif;font-weight:500;font-size:18px}
+.brand small{display:block;font-size:11.5px;color:var(--ink-soft);font-weight:400;letter-spacing:.04em}
+nav.links{display:flex;gap:20px;align-items:center}
+nav.links a{text-decoration:none;font-size:15px;color:var(--ink-soft);font-weight:500;padding:6px 2px;
+  border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+nav.links a:hover,nav.links a[aria-current="page"]{color:var(--green);border-color:var(--green-2)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;padding:8px 11px;cursor:pointer;color:var(--ink)}
+
+/* SÖZ BANDI */
+.quote-band{background:var(--green);color:#E8F0E9;font-size:14.5px;overflow:hidden}
+.quote-band .wrap{display:flex;align-items:center;gap:12px;min-height:44px;padding-top:6px;padding-bottom:6px}
+.quote-band .tag{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+#quote-text{opacity:1;transition:opacity .6s ease;font-style:italic}
+#quote-text.fading{opacity:0}
+
+/* SECTION & CARDS */
+section.band{padding:60px 0;border-top:1px solid var(--line)}
+.band-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.band-head h2{font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;margin-top:10px}
+.band-head p{color:var(--ink-soft);max-width:52ch;margin:8px 0 0}
+.grid{display:grid;gap:22px}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--rad);
+  padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;
+  text-decoration:none;transition:transform .18s ease,border-color .18s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--sage)}
+.card .cat{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.card h3{font-size:21px}
+.card p{margin:0;color:var(--ink-soft);font-size:15.5px}
+.card .meta{margin-top:auto;font-size:13px;color:var(--ink-soft)}
+.card-top{height:6px;border-radius:6px 6px 0 0;margin:-26px -26px 14px}
+
+/* MAKALE */
+.article{max-width:720px;margin:0 auto;padding:56px 24px 80px}
+.article h1{font-size:clamp(30px,4.4vw,44px);margin:14px 0 18px}
+.article .meta{color:var(--ink-soft);font-size:14px;margin-bottom:36px;display:flex;gap:14px;flex-wrap:wrap}
+.article h2{font-size:26px;margin:40px 0 14px}
+.article ul{padding-left:22px}
+.article .disclaimer{background:var(--mist);border-left:3px solid var(--green-2);padding:14px 18px;
+  border-radius:0 10px 10px 0;font-size:14.5px;color:var(--ink-soft);margin:0 0 28px}
+.article .pull{font-family:"Fraunces",serif;font-size:22px;line-height:1.45;color:var(--green);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 4px;margin:34px 0}
+.article .sources{margin-top:44px;border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--ink-soft)}
+.article .sources h3,.article .sources h4{font-size:15px;margin-bottom:10px}
+.article .sources ol{padding-left:20px}
+.article .sources a{color:var(--green-2);word-break:break-word}
+
+/* CHIP FİLTRE */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.chip{border:1px solid var(--line);background:var(--paper-2);border-radius:100px;
+  padding:8px 18px;font-size:14px;cursor:pointer;font-family:inherit;transition:all .15s}
+.chip:hover{border-color:var(--sage)}
+.chip.active{background:var(--green);color:#F4F7F2;border-color:var(--green)}
+
+/* FORM */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.field label{font-size:14px;font-weight:600}
+.field input,.field textarea,.field select{font-family:inherit;font-size:15.5px;padding:12px 14px;
+  border:1px solid var(--line);border-radius:10px;background:var(--paper-2);color:var(--ink)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--sage);border-color:var(--green-2)}
+.hint{font-size:13px;color:var(--ink-soft)}
+
+/* TIMELINE (Ben Kimim) */
+.timeline{position:relative;padding-left:26px;margin-top:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--line)}
+.t-item{position:relative;padding:0 0 30px 18px}
+.t-item::before{content:"";position:absolute;left:-24px;top:6px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--green-2)}
+.t-item .yil{font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--copper)}
+.t-item h3{font-size:19px;margin:4px 0 6px}
+.t-item p{margin:0;color:var(--ink-soft);font-size:15px}
+
+/* TAKVİM */
+.month-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--rad);padding:24px;box-shadow:var(--shadow)}
+.month-card.current{border-color:var(--green-2);outline:2px solid var(--sage)}
+.month-card h3{font-size:22px;margin-bottom:12px}
+.month-card .row{display:flex;gap:8px;font-size:14.5px;margin:8px 0;color:var(--ink-soft)}
+.month-card .row b{color:var(--ink);flex:none}
+.pill{display:inline-block;background:var(--mist);border-radius:100px;padding:3px 12px;font-size:13px;margin:2px 4px 2px 0}
+
+/* QUIZ */
+.quiz-box{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--rad);
+  padding:34px;box-shadow:var(--shadow);max-width:680px;margin:0 auto}
+.quiz-q{font-family:"Fraunces",serif;font-size:24px;margin-bottom:20px}
+.quiz-opts{display:grid;gap:10px}
+.quiz-opt{text-align:left;font-family:inherit;font-size:15.5px;padding:14px 18px;border:1px solid var(--line);
+  border-radius:10px;background:var(--paper);cursor:pointer;transition:all .15s}
+.quiz-opt:hover{border-color:var(--green-2);background:var(--mist)}
+.quiz-progress{height:5px;background:var(--mist);border-radius:5px;margin-bottom:26px;overflow:hidden}
+.quiz-progress i{display:block;height:100%;background:var(--green-2);transition:width .3s ease}
+.quiz-result h3{font-size:24px;margin-bottom:12px}
+.quiz-result .step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.quiz-result .step:last-child{border-bottom:none}
+.quiz-result .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;
+  display:grid;place-items:center;font-size:14px;font-weight:700}
+
+/* S-C accordion */
+.qa-item{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.qa-item summary{cursor:pointer;padding:18px 22px;font-weight:600;font-size:16px;list-style:none;display:flex;gap:12px;align-items:baseline}
+.qa-item summary::-webkit-details-marker{display:none}
+.qa-item summary::before{content:"S:";color:var(--green-2);font-family:"Fraunces",serif;font-weight:600}
+.qa-item .qa-body{padding:0 22px 20px;color:var(--ink-soft);border-top:1px dashed var(--line)}
+.qa-item .qa-body p:first-child{margin-top:16px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);background:var(--paper-2);margin-top:60px}
+footer .wrap{padding:44px 24px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
+footer a{color:var(--ink-soft)}
+.medical-note{font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding:14px 0;text-align:center;font-style:italic;background:var(--mist)}
+
+@media (max-width:900px){
+  .grid.three{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .grid.three,.grid.two{grid-template-columns:1fr}
+  nav.links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper-2);
+    flex-direction:column;padding:18px 24px;border-bottom:1px solid var(--line);gap:14px;align-items:flex-start}
+  nav.links.open{display:flex}
+  .nav-toggle{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+
+/* ============================================================
+   KURUMSAL REVİZYON — v2 (butonlar, hero, illüstrasyon, footer)
+   ============================================================ */
+
+/* Butonlar: daha canlı, belirgin ve kurumsal */
+.btn{box-shadow:0 1px 2px rgba(25,34,25,.08);position:relative}
+.btn::after{content:"→";font-weight:600;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn-primary{background:linear-gradient(135deg,var(--green) 0%,var(--green-2) 100%);
+  color:#F4F7F2;box-shadow:0 2px 4px rgba(31,74,55,.25),0 10px 24px -10px rgba(31,74,55,.45)}
+.btn-primary:hover{background:linear-gradient(135deg,var(--green-2) 0%,var(--green) 100%);
+  transform:translateY(-2px);box-shadow:0 4px 8px rgba(31,74,55,.28),0 16px 32px -12px rgba(31,74,55,.5)}
+.btn-accent{background:linear-gradient(135deg,var(--copper) 0%,#C97F4E 100%);color:#FFF7F0;
+  box-shadow:0 2px 4px rgba(179,106,60,.28),0 10px 24px -10px rgba(179,106,60,.5)}
+.btn-accent:hover{background:linear-gradient(135deg,#C97F4E 0%,var(--copper) 100%);
+  transform:translateY(-2px);box-shadow:0 4px 8px rgba(179,106,60,.32),0 16px 32px -12px rgba(179,106,60,.55)}
+.btn-ghost{box-shadow:none}
+.btn-ghost::after{color:var(--green-2)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* Sayfa hero: metin + illüstrasyon iki sütun */
+.page-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-top:20px}
+.page-hero-text .page-title{font-size:clamp(32px,4.6vw,50px);margin:14px 0 18px;letter-spacing:-.01em}
+.page-hero-text .lead{color:var(--ink-soft);font-size:17.5px;max-width:56ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.illust{width:100%;height:auto}
+.illust-wrap{display:block}
+.illust-wrap.page-hero-art,.illust-wrap.band-art{display:block}
+.page-hero-art{max-width:420px;justify-self:center;filter:drop-shadow(0 18px 30px rgba(25,34,25,.12))}
+.band-art{max-width:340px;margin:0 auto 8px;display:block}
+
+/* Güven şeridi (anasayfa) */
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.trust-item{display:flex;gap:14px;align-items:flex-start;background:var(--paper-2);
+  border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;box-shadow:var(--shadow)}
+.trust-item .ico{flex:none;width:40px;height:40px;border-radius:11px;background:var(--mist);
+  display:grid;place-items:center;color:var(--green-2);font-size:19px}
+.trust-item b{display:block;font-size:15px;margin-bottom:2px}
+.trust-item span{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+
+/* Bilgilendirme not kutusu (araçlar ve sayfa sonları için standart) */
+.note-box{background:var(--mist);border:1px solid var(--line);border-left:4px solid var(--copper);
+  border-radius:0 12px 12px 0;padding:16px 20px;font-size:14.5px;color:var(--ink-soft)}
+.note-box b{color:var(--ink)}
+
+/* Kartlar: daha kurumsal derinlik */
+.card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.card:hover{box-shadow:0 2px 4px rgba(25,34,25,.06),0 20px 44px -18px rgba(25,34,25,.24)}
+
+/* Nav: sağda belirgin CTA */
+.nav-cta{margin-left:6px}
+@media (max-width:680px){.nav-cta{display:none}}
+
+/* Kurumsal footer */
+footer{margin-top:80px;background:var(--green);border-top:none;color:#DDE9DF}
+footer .wrap.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;
+  padding:56px 24px 40px;font-size:14.5px;color:#C6D6C9}
+footer .foot-grid h4{font-family:"Inter",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sage);margin:0 0 14px}
+footer .foot-grid a{color:#DDE9DF;text-decoration:none;display:block;padding:4px 0;transition:color .15s}
+footer .foot-grid a:hover{color:#fff;text-decoration:underline}
+footer .foot-brand .mono{width:44px;height:44px;border-radius:12px;background:#F4F7F2;color:var(--green);
+  display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:20px;margin-bottom:14px}
+footer .foot-brand p{margin:8px 0 0;line-height:1.65;max-width:34ch}
+footer .foot-bottom{border-top:1px solid rgba(255,255,255,.14);background:transparent}
+footer .foot-bottom .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:18px 24px;font-size:13px;color:#A9BFAE}
+.medical-note{background:rgba(0,0,0,.14);border-top:1px solid rgba(255,255,255,.1);color:#B9CCBD}
+
+@media (max-width:900px){
+  .page-hero{grid-template-columns:1fr;gap:26px}
+  .page-hero-art{max-width:330px}
+  .trust-strip{grid-template-columns:1fr}
+  footer .wrap.foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  footer .wrap.foot-grid{grid-template-columns:1fr}
+}
+
+/* ============ SAĞLIK ARAÇLARI ============ */
+.tool-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--rad);
+  padding:34px;box-shadow:var(--shadow);margin-bottom:34px;scroll-margin-top:96px}
+.tool-card h2{font-size:27px;margin:8px 0 6px}
+.tool-card .tool-desc{color:var(--ink-soft);font-size:15.5px;margin:0 0 22px}
+.tool-inputs{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.tool-result{margin-top:24px;background:var(--mist);border:1px solid var(--sage);border-radius:12px;padding:20px 22px}
+.tool-result .big{font-family:"Fraunces",serif;font-size:38px;color:var(--green);line-height:1.1}
+.tool-result .big small{font-size:17px;color:var(--ink-soft);font-family:"Inter",sans-serif}
+.tool-result .tag{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+.tool-result p{margin:10px 0 0;font-size:14.5px;color:var(--ink-soft)}
+.tool-result .tool-err{color:var(--copper);font-weight:600;margin:0}
+.tool-note{margin-top:20px;font-size:13.5px}
+.chips a.chip{text-decoration:none;color:var(--ink)}
+@media (max-width:620px){.tool-inputs{grid-template-columns:1fr}.tool-card{padding:24px}}
+
+/* Instagram link (footer) */
+footer .foot-grid a.ig-link{display:inline-flex;align-items:center;gap:8px}
+footer .foot-grid a.ig-link svg{flex:none}
+/* Instagram butonu (Ben Kimim) */
+.btn-ig{background:linear-gradient(135deg,#833AB4 0%,#E1306C 55%,#F77737 100%);color:#fff;
+  box-shadow:0 2px 4px rgba(131,58,180,.28),0 10px 24px -10px rgba(225,48,108,.5)}
+.btn-ig:hover{transform:translateY(-2px);filter:brightness(1.05);
+  box-shadow:0 4px 8px rgba(131,58,180,.32),0 16px 32px -12px rgba(225,48,108,.55)}
+.btn-ig::after{content:""}
+.btn-ig svg{flex:none}
+
+/* Instagram CTA paneli (Eczacıya Sor / İletişim) */
+.cta-panel{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--copper);
+  border-radius:0 14px 14px 0;padding:24px 26px;box-shadow:var(--shadow)}
+.cta-panel h3{font-size:20px}
+.cta-panel .btn{flex:none}
+@media (max-width:560px){.cta-panel{flex-direction:column;align-items:flex-start}.cta-panel .btn{width:100%;justify-content:center}}

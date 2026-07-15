@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": "s1",
+      "text": "İlaçların en iyisi, gerekmediğinde alınmayandır."
+    },
+    {
+      "id": "s2",
+      "text": "Bırak besinler ilacın, ilacın da besinin olsun.",
+      "author": "Hipokrat"
+    },
+    {
+      "id": "s3",
+      "text": "Sağlık her şey değildir; ama sağlık olmadan her şey hiçtir.",
+      "author": "Schopenhauer"
+    },
+    {
+      "id": "s4",
+      "text": "Küçük ve düzenli adımlar, büyük ve düzensiz hamlelerden daha çok iyileştirir."
+    },
+    {
+      "id": "s5",
+      "text": "Cilt aceleyi sevmez; tutarlılığı ödüllendirir."
+    },
+    {
+      "id": "s6",
+      "text": "Okumak, zihne yapılan en ucuz ve en etkili bakımdır."
+    },
+    {
+      "id": "s7",
+      "text": "Uyku, hiçbir serumun yerini tutamayacağı gece bakımıdır."
+    },
+    {
+      "id": "s8",
+      "text": "Şüphe, sağlık okuryazarlığının ilk vitaminidir."
+    },
+    {
+      "id": "s9",
+      "text": "En pahalı ürün değil, düzenli kullanılan ürün işe yarar."
+    },
+    {
+      "id": "s10",
+      "text": "Hareket bir ilaç olsaydı, herkese reçete edilirdi."
+    }
+  ]
+}

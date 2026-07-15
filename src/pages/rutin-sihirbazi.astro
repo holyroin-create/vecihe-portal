@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+---
+<Base title="Rutin Sihirbazı" activeNav="quiz" description="Cilt tipine ve şikâyetine göre kanıta dayalı bir rutin iskeleti oluştur.">
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div style="text-align:center;max-width:640px;margin:0 auto 34px">
+        <Illust name="routine" class="band-art" />
+        <p class="eyebrow" style="justify-content:center">İnteraktif Araç</p>
+        <h2 style="margin:12px 0 10px">Rutin Sihirbazı</h2>
+        <p style="color:var(--ink-soft)">Üç soruda, cilt tipine ve önceliğine uygun bir sabah-akşam rutin iskeleti.
+        Sonuçlar geneldir; kişisel öneri için eczacınıza veya dermatoloğunuza danışın.</p>
+      </div>
+      <div class="quiz-box" id="quiz"></div>
+    </div>
+  </section>
+
+  <script>
+    type Answers = { tip?: string; yas?: string; sorun?: string };
+    const QUESTIONS = [
+      { key: 'tip', q: 'Cildini nasıl tanımlarsın?', opts: [
+        ['kuru', 'Kuru — gerginlik, pullanma olur'],
+        ['yagli', 'Yağlı — gün içinde parlar, gözenekler belirgin'],
+        ['karma', 'Karma — T bölgesi yağlı, yanaklar normal/kuru'],
+        ['hassas', 'Hassas — ürünlere kolay tepki verir, kızarır'],
+      ]},
+      { key: 'yas', q: 'Yaş aralığın?', opts: [
+        ['genc', '25 altı'], ['orta', '25–35'], ['olgun', '35 üzeri'],
+      ]},
+      { key: 'sorun', q: 'Şu an en çok neyi düzeltmek istiyorsun?', opts: [
+        ['akne', 'Akne / siyah nokta'],
+        ['leke', 'Leke / ton eşitsizliği'],
+        ['kuruluk', 'Kuruluk / bariyer hasarı'],
+        ['yaslanma', 'İnce çizgiler / elastikiyet'],
+      ]},
+    ];
+
+    function buildResult(a: Answers) {
+      const sabah: string[] = ['Nazik temizleyici (cilt tipine uygun, sabunsuz)'];
+      const aksam: string[] = ['Temizleyici (makyaj/SPF varsa çift aşamalı düşünülebilir)'];
+      const notlar: string[] = [];
+
+      if (a.sorun === 'akne') { sabah.push('Niasinamid %4–5 serum'); aksam.push('Salisilik asit (BHA) — haftada 2–3 gece başlangıç'); }
+      if (a.sorun === 'leke') { sabah.push('C vitamini serumu'); aksam.push('Azelaik asit veya düşük doz retinoid — kademeli başlangıç'); notlar.push('Leke rutininin en kritik adımı güneş korumasıdır; SPF olmadan diğer adımlar boşa gider.'); }
+      if (a.sorun === 'kuruluk') { sabah.push('Hyaluronik asit serumu (nemli cilde)'); aksam.push('Seramidli onarıcı krem'); notlar.push('Bariyer toparlanana kadar aktif (asit/retinoid) kullanımına ara vermek genellikle daha doğrudur.'); }
+      if (a.sorun === 'yaslanma') { sabah.push('Antioksidan serum (C vitamini)'); aksam.push('Retinol — düşük yoğunlukla, haftada 2 gece başlayıp artırarak'); }
+
+      if (a.tip === 'kuru' || a.tip === 'hassas') { sabah.push('Zengin nemlendirici'); aksam.push('Zengin nemlendirici / gece kremi'); }
+      else { sabah.push('Hafif, yağsız nemlendirici'); aksam.push('Hafif nemlendirici'); }
+      if (a.tip === 'hassas') notlar.push('Hassas ciltte her yeni ürün için 3–4 gün kol içi/kulak arkası testi yapın; tek seferde tek yenilik ekleyin.');
+
+      sabah.push('Geniş spektrumlu SPF 30+ (her mevsim, son adım)');
+      if (a.yas === 'olgun' && a.sorun !== 'yaslanma') notlar.push('35 üzeri ciltte retinoid, uzun vadede en güçlü kanıta sahip bileşendir; rutine eklemeyi değerlendirebilirsiniz.');
+      notlar.push('Yeni aktiflere her zaman düşük yoğunluk ve düşük sıklıkla başlayın; ciltten gelen sinyali dinleyin.');
+      return { sabah, aksam, notlar };
+    }
+
+    const box = document.getElementById('quiz')!;
+    const answers: Answers = {};
+    let step = 0;
+
+    function renderStep() {
+      if (step >= QUESTIONS.length) return renderResult();
+      const item = QUESTIONS[step];
+      box.innerHTML = `
+        <div class="quiz-progress"><i style="width:${(step / QUESTIONS.length) * 100}%"></i></div>
+        <div class="quiz-q">${item.q}</div>
+        <div class="quiz-opts">
+          ${item.opts.map(([v, label]) => `<button class="quiz-opt" data-v="${v}">${label}</button>`).join('')}
+        </div>`;
+      box.querySelectorAll<HTMLElement>('.quiz-opt').forEach(b => b.addEventListener('click', () => {
+        (answers as any)[item.key] = b.dataset.v;
+        step++;
+        renderStep();
+      }));
+    }
+
+    function renderResult() {
+      const r = buildResult(answers);
+      const list = (arr: string[]) => arr.map((s, i) =>
+        `<div class="step"><span class="n">${i + 1}</span><span>${s}</span></div>`).join('');
+      box.innerHTML = `
+        <div class="quiz-progress"><i style="width:100%"></i></div>
+        <div class="quiz-result">
+          <h3>Senin rutin iskeletin</h3>
+          <p class="eyebrow">Sabah</p>${list(r.sabah)}
+          <p class="eyebrow" style="margin-top:22px">Akşam</p>${list(r.aksam)}
+          <div class="disclaimer" style="margin-top:26px">
+            ${r.notlar.map(n => `<p style="margin:6px 0">${n}</p>`).join('')}
+            <p style="margin:6px 0"><b>Bu sonuç genel bir iskelettir; tanı ve tedavi yerine geçmez.</b></p>
+          </div>
+          <button class="btn btn-ghost" id="restart" style="margin-top:18px">Baştan başla</button>
+        </div>`;
+      document.getElementById('restart')?.addEventListener('click', () => {
+        step = 0; renderStep();
+      });
+    }
+    renderStep();
+  </script>
+</Base>

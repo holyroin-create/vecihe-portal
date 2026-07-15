@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+const IG = "https://www.instagram.com/ecz.vecihebengisu/";
+---
+<Base title="İletişim">
+  <section class="band" style="border-top:none">
+    <div class="wrap" style="max-width:680px">
+      <Illust name="contact" class="band-art" />
+      <p class="eyebrow">İletişim</p>
+      <h2 style="margin:12px 0 14px">Bana ulaşın</h2>
+      <p style="color:var(--ink-soft)">
+        İş birliği, yazı önerisi veya geri bildirim için bana en hızlı ulaşabileceğiniz yer Instagram.
+        Mesajlarınıza buradan dönüş yapıyorum. Genel sağlık ve cilt bakımı soruları için
+        <a href="/eczaciya-sor">Eczacıya Sor</a> sayfası daha uygundur.
+      </p>
+
+      <div class="cta-panel" style="margin-top:26px">
+        <div>
+          <h3 style="margin:0 0 6px">Instagram'dan yazın</h3>
+          <p style="margin:0;color:var(--ink-soft);font-size:15px">@ecz.vecihebengisu — DM'lerinize dönüş yapılır.</p>
+        </div>
+        <a class="btn btn-ig" href={IG} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Mesaj gönder
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

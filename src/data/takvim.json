@@ -1,0 +1,251 @@
+{
+  "items": [
+    {
+      "id": "ocak",
+      "ay": "Ocak",
+      "polen": "Düşük — kapalı mekân alerjenleri (akar, küf) öne çıkar.",
+      "mevsimsel": [
+        "Portakal",
+        "Mandalina",
+        "Pırasa",
+        "Kereviz",
+        "Lahana"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "4 Şubat öncesi hazırlık",
+          "ad": ""
+        }
+      ],
+      "not": "Kuru ve soğuk hava cilt bariyerini zorlar; nemlendirme sıklığını artırın."
+    },
+    {
+      "id": "subat",
+      "ay": "Şubat",
+      "polen": "Kızılağaç ve fındık poleni erken uyarı verebilir.",
+      "mevsimsel": [
+        "Greyfurt",
+        "Ispanak",
+        "Karnabahar",
+        "Havuç"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "4 Şubat",
+          "ad": "Dünya Kanser Günü"
+        }
+      ],
+      "not": "Bağışıklık için düzenli uyku, C vitamini takviyesinden daha etkilidir."
+    },
+    {
+      "id": "mart",
+      "ay": "Mart",
+      "polen": "Ağaç polenleri (huş, servi) yükselişe geçer.",
+      "mevsimsel": [
+        "Enginar",
+        "Kuşkonmaz",
+        "Taze soğan",
+        "Semizotu"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "8 Mart",
+          "ad": "Dünya Böbrek Günü (2. Perşembe)"
+        },
+        {
+          "gun": "24 Mart",
+          "ad": "Dünya Tüberküloz Günü"
+        }
+      ],
+      "not": "Alerjik rinit belirtileri başlıyorsa antihistaminik için eczacınıza danışın."
+    },
+    {
+      "id": "nisan",
+      "ay": "Nisan",
+      "polen": "Ağaç poleni zirvesi — çınar, meşe, çam.",
+      "mevsimsel": [
+        "Çilek",
+        "Bezelye",
+        "Bakla",
+        "Marul"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "7 Nisan",
+          "ad": "Dünya Sağlık Günü"
+        },
+        {
+          "gun": "25 Nisan",
+          "ad": "Dünya Sıtma Günü"
+        }
+      ],
+      "not": "Polen saatlerinde (sabah erken) pencereleri kapalı tutmak belirtileri azaltır."
+    },
+    {
+      "id": "mayis",
+      "ay": "Mayıs",
+      "polen": "Çayır otu polenleri devreye girer.",
+      "mevsimsel": [
+        "Kiraz",
+        "Yeşil erik",
+        "Kabak",
+        "Taze fasulye"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "10 Mayıs",
+          "ad": "Dünya Lupus Günü"
+        },
+        {
+          "gun": "31 Mayıs",
+          "ad": "Dünya Tütünsüz Günü"
+        }
+      ],
+      "not": "Güneş koruyucu sezonu resmen açılmıştır — bulutlu günler dahil."
+    },
+    {
+      "id": "haziran",
+      "ay": "Haziran",
+      "polen": "Çayır otu zirvesi; şehir dışında belirtiler artar.",
+      "mevsimsel": [
+        "Karpuz",
+        "Kayısı",
+        "Şeftali",
+        "Domates",
+        "Biber"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "14 Haziran",
+          "ad": "Dünya Kan Bağışçıları Günü"
+        }
+      ],
+      "not": "Sıcakta ilaç saklama koşullarına dikkat: 25°C üzeri birçok ilaç için risklidir."
+    },
+    {
+      "id": "temmuz",
+      "ay": "Temmuz",
+      "polen": "Ot polenleri sürer; yabani otlar başlar.",
+      "mevsimsel": [
+        "Karpuz",
+        "Kavun",
+        "İncir",
+        "Mısır",
+        "Patlıcan"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "28 Temmuz",
+          "ad": "Dünya Hepatit Günü"
+        }
+      ],
+      "not": "Bol terleme günlerinde su + elektrolit dengesini ihmal etmeyin."
+    },
+    {
+      "id": "agustos",
+      "ay": "Ağustos",
+      "polen": "Yabani ot polenleri (pelin) öne çıkar.",
+      "mevsimsel": [
+        "Üzüm",
+        "İncir",
+        "Kavun",
+        "Bamya"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "1-7 Ağustos",
+          "ad": "Dünya Emzirme Haftası"
+        }
+      ],
+      "not": "Tatil çantasına: SPF, oral rehidratasyon tuzu, yara bandı, antihistaminik."
+    },
+    {
+      "id": "eylul",
+      "ay": "Eylül",
+      "polen": "Pelin poleni sürebilir; okul dönemi viral enfeksiyonları başlar.",
+      "mevsimsel": [
+        "Üzüm",
+        "Armut",
+        "Ayva",
+        "Pancar"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "21 Eylül",
+          "ad": "Dünya Alzheimer Günü"
+        },
+        {
+          "gun": "29 Eylül",
+          "ad": "Dünya Kalp Günü"
+        }
+      ],
+      "not": "Grip aşısı için en uygun dönem Eylül sonu - Kasım arasıdır."
+    },
+    {
+      "id": "ekim",
+      "ay": "Ekim",
+      "polen": "Polen düşer; kapalı alan alerjenleri geri döner.",
+      "mevsimsel": [
+        "Nar",
+        "Kestane",
+        "Balkabağı",
+        "Turp"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "10 Ekim",
+          "ad": "Dünya Ruh Sağlığı Günü"
+        },
+        {
+          "gun": "29 Ekim",
+          "ad": "Dünya İnme Günü"
+        }
+      ],
+      "not": "Meme kanseri farkındalık ayı: düzenli kontrolünüzü planlayın."
+    },
+    {
+      "id": "kasim",
+      "ay": "Kasım",
+      "polen": "Düşük polen; nem ve küf artışına dikkat.",
+      "mevsimsel": [
+        "Portakal",
+        "Mandalina",
+        "Kivi",
+        "Pırasa"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "14 Kasım",
+          "ad": "Dünya Diyabet Günü"
+        },
+        {
+          "gun": "18-24 Kasım",
+          "ad": "Antibiyotik Farkındalık Haftası"
+        }
+      ],
+      "not": "Antibiyotik gribe iyi gelmez — viral enfeksiyonda semptomatik destek yeterlidir."
+    },
+    {
+      "id": "aralik",
+      "ay": "Aralık",
+      "polen": "Düşük polen; kapalı mekân kaynaklı belirtiler öne çıkar.",
+      "mevsimsel": [
+        "Greyfurt",
+        "Portakal",
+        "Kereviz",
+        "Karalahana"
+      ],
+      "saglikGunleri": [
+        {
+          "gun": "1 Aralık",
+          "ad": "Dünya AIDS Günü"
+        },
+        {
+          "gun": "3 Aralık",
+          "ad": "Engelliler Günü"
+        }
+      ],
+      "not": "Yılbaşı yorgunluğunda mucize detoks yok; uyku, su ve sebze var."
+    }
+  ]
+}

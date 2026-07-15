@@ -1,0 +1,132 @@
+---
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeNav?: string;
+}
+const { title, description = "Ecz. Vecihe Bengisu — cilt bakımı, sağlık okuryazarlığı, eczacılık ve yaşam üzerine kanıta dayalı, sade yazılar.", activeNav = '' } = Astro.props;
+
+const sozler = await getCollection('sozler');
+const quoteTexts = sozler.map(s => s.data.author ? `“${s.data.text}” — ${s.data.author}` : `“${s.data.text}”`);
+
+const navItems = [
+  { href: '/', label: 'Ana Sayfa', key: 'home' },
+  { href: '/blog', label: 'Yazılar', key: 'blog' },
+  { href: '/eczaciya-sor', label: 'Eczacıya Sor', key: 'sor' },
+  { href: '/rutin-sihirbazi', label: 'Rutin Sihirbazı', key: 'quiz' },
+  { href: '/araclar', label: 'Araçlar', key: 'araclar' },
+  { href: '/takvim', label: 'Sağlık Takvimi', key: 'takvim' },
+  { href: '/hakkimda', label: 'Hakkımda', key: 'hakkimda' },
+];
+---
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · Vecihe Bengisu</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/">
+        <span class="mono">VB</span>
+        <span><b>Vecihe Bengisu</b><small>Eczacı · Sağlık & Yaşam</small></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">☰</button>
+      <nav class="links" id="nav-links">
+        {navItems.map(item => (
+          <a href={item.href} aria-current={activeNav === item.key ? 'page' : undefined}>{item.label}</a>
+        ))}
+        <a class="btn btn-accent btn-sm nav-cta" href="/eczaciya-sor">Soru Sor</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="quote-band" aria-live="polite">
+    <div class="wrap">
+      <span class="tag">Günün Sözü</span>
+      <span id="quote-text">{quoteTexts[0]}</span>
+    </div>
+  </div>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <span class="mono">VB</span>
+        <b style="font-family:'Fraunces',serif;font-size:18px;color:#F4F7F2">Vecihe Bengisu</b>
+        <p>Eczacı. Bilimsel kaynakları, klinik çalışmaları ve resmî sağlık otoritelerinin önerilerini
+        sade bir dile çeviriyorum. Doğru bilgiyi, anlaşılır biçimde.</p>
+      </div>
+      <div>
+        <h4>Keşfet</h4>
+        <a href="/blog">Yazılar</a>
+        <a href="/rutin-sihirbazi">Rutin Sihirbazı</a>
+        <a href="/araclar">Sağlık Araçları</a>
+        <a href="/takvim">Sağlık Takvimi</a>
+        <a href="/urunler">Önerdiğim Ürünler</a>
+      </div>
+      <div>
+        <h4>Topluluk</h4>
+        <a href="https://www.instagram.com/ecz.vecihebengisu/" target="_blank" rel="noopener" class="ig-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="/eczaciya-sor">Eczacıya Sor</a>
+        <a href="/hakkimda">Hakkımda</a>
+        <a href="/iletisim">İletişim</a>
+      </div>
+      <div>
+        <h4>Kurumsal</h4>
+        <a href="/kvkk">KVKK &amp; Aydınlatma Metni</a>
+        <a href="/iletisim">İş Birliği</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="wrap">
+        <span>© {new Date().getFullYear()} Vecihe Bengisu — Tüm hakları saklıdır.</span>
+        <span>Eczacı · Sağlık &amp; Yaşam Portalı</span>
+      </div>
+    </div>
+    <div class="medical-note">
+      Burada yer alan bilgiler tanı ve tedavi amacı taşımamaktadır; doktorunuza veya eczacınıza danışınız.
+    </div>
+  </footer>
+
+  <script define:vars={{ quoteTexts }}>
+    // 60 saniyede bir değişen söz bandı (fade-out/fade-in)
+    const el = document.getElementById('quote-text');
+    if (el && quoteTexts.length > 1) {
+      let i = Math.floor(Math.random() * quoteTexts.length);
+      el.textContent = quoteTexts[i];
+      setInterval(() => {
+        el.classList.add('fading');
+        setTimeout(() => {
+          i = (i + 1) % quoteTexts.length;
+          el.textContent = quoteTexts[i];
+          el.classList.remove('fading');
+        }, 600);
+      }, 60000);
+    }
+    // mobil menü
+    const t = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    t?.addEventListener('click', () => links?.classList.toggle('open'));
+  </script>
+</body>
+</html>

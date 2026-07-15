@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={post.data.title} description={post.data.excerpt} activeNav="blog">
+  <article class="article">
+    <p class="eyebrow" style={`color:${post.data.accent}`}>{post.data.category}</p>
+    <h1>{post.data.title}</h1>
+    <div class="meta">
+      <span>Ecz. Vecihe Bengisu</span>
+      <span>{post.data.dateLabel}</span>
+      <span>{post.data.readTime} okuma</span>
+    </div>
+    <Content />
+    <div class="disclaimer" style="margin-top:40px">
+      Burada yer alan bilgiler tanı ve tedavi amacı taşımamaktadır; doktorunuza danışınız.
+    </div>
+  </article>
+</Base>

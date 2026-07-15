@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+---
+<Base title="Sağlık Araçları" activeNav="araclar" description="VKİ, günlük kalori ve su ihtiyacı, ideal kilo aralığı ve bel-boy oranı — resmî formüllerle çalışan hesaplayıcılar.">
+  <section class="band" style="border-top:none">
+    <div class="wrap page-hero">
+      <div class="page-hero-text">
+        <p class="eyebrow">İnteraktif Araçlar</p>
+        <h1 class="page-title">Sağlık hesaplayıcıları</h1>
+        <p class="lead">
+          Vücut kitle indeksinden günlük kalori ihtiyacına, hepsi literatürde geçerliliği kabul edilmiş
+          formüllerle (DSÖ sınıflandırması, Mifflin-St Jeor, Devine) çalışır. Sonuçlar yalnızca
+          girdiğiniz verilere dayanan genel tahminlerdir.
+        </p>
+        <div class="chips" style="margin:22px 0 0">
+          <a class="chip" href="#vki">VKİ</a>
+          <a class="chip" href="#kalori">Günlük Kalori</a>
+          <a class="chip" href="#su">Su İhtiyacı</a>
+          <a class="chip" href="#ideal-kilo">İdeal Kilo</a>
+          <a class="chip" href="#bel-boy">Bel-Boy Oranı</a>
+        </div>
+      </div>
+      <Illust name="tools" class="page-hero-art" style="max-width:380px" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap" style="max-width:760px">
+
+      <!-- ============ VKİ ============ -->
+      <div class="tool-card" id="vki">
+        <span class="cat" style="color:var(--green-2)">DSÖ Sınıflandırması</span>
+        <h2>Vücut Kitle İndeksi (VKİ)</h2>
+        <p class="tool-desc">Kilonuzun boyunuza oranla hangi aralıkta olduğunu gösterir. Formül: kilo ÷ boy² (kg/m²).</p>
+        <div class="tool-inputs">
+          <div class="field"><label for="vki-boy">Boy (cm)</label><input id="vki-boy" type="number" inputmode="decimal" min="100" max="250" placeholder="Örn: 168" /></div>
+          <div class="field"><label for="vki-kilo">Kilo (kg)</label><input id="vki-kilo" type="number" inputmode="decimal" min="25" max="300" placeholder="Örn: 62" /></div>
+        </div>
+        <button class="btn btn-primary" data-calc="vki">Hesapla</button>
+        <div class="tool-result" id="vki-sonuc" hidden></div>
+        <div class="note-box tool-note">
+          <b>Not:</b> Bu sonuç yalnızca sizin girdiğiniz verilerle hesaplanmış genel bir değerdir; kas oranı,
+          yaş ve vücut kompozisyonunu dikkate almaz. Daha detaylı ve doğru bir değerlendirme için lütfen
+          bir hastanenin <b>Beslenme ve Diyet</b> veya <b>Dahiliye (İç Hastalıkları)</b> birimine başvurunuz.
+        </div>
+      </div>
+
+      <!-- ============ KALORİ ============ -->
+      <div class="tool-card" id="kalori">
+        <span class="cat" style="color:var(--copper)">Mifflin-St Jeor Denklemi</span>
+        <h2>Günlük Kalori İhtiyacı</h2>
+        <p class="tool-desc">Bazal metabolizma hızınızı (BMH) ve aktivite düzeyinize göre tahmini günlük enerji ihtiyacınızı hesaplar.</p>
+        <div class="tool-inputs">
+          <div class="field"><label for="kal-cins">Cinsiyet</label>
+            <select id="kal-cins"><option value="k">Kadın</option><option value="e">Erkek</option></select></div>
+          <div class="field"><label for="kal-yas">Yaş</label><input id="kal-yas" type="number" inputmode="numeric" min="15" max="100" placeholder="Örn: 25" /></div>
+          <div class="field"><label for="kal-boy">Boy (cm)</label><input id="kal-boy" type="number" inputmode="decimal" min="100" max="250" placeholder="Örn: 168" /></div>
+          <div class="field"><label for="kal-kilo">Kilo (kg)</label><input id="kal-kilo" type="number" inputmode="decimal" min="25" max="300" placeholder="Örn: 62" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="kal-akt">Aktivite düzeyi</label>
+            <select id="kal-akt">
+              <option value="1.2">Hareketsiz (masa başı, egzersiz yok)</option>
+              <option value="1.375">Az hareketli (haftada 1–3 gün hafif egzersiz)</option>
+              <option value="1.55" selected>Orta düzey (haftada 3–5 gün egzersiz)</option>
+              <option value="1.725">Çok hareketli (haftada 6–7 gün egzersiz)</option>
+              <option value="1.9">Aşırı hareketli (fiziksel iş + yoğun antrenman)</option>
+            </select></div>
+        </div>
+        <button class="btn btn-primary" data-calc="kalori">Hesapla</button>
+        <div class="tool-result" id="kalori-sonuc" hidden></div>
+        <div class="note-box tool-note">
+          <b>Not:</b> Bu sonuç yalnızca sizin girdiğiniz verilerle hesaplanmış bir tahmindir; hormonal durum,
+          hastalıklar ve ilaç kullanımı ihtiyacınızı değiştirebilir. Kişiye özel beslenme planı için lütfen
+          bir hastanenin <b>Beslenme ve Diyet</b> birimine (diyetisyene) başvurunuz.
+        </div>
+      </div>
+
+      <!-- ============ SU ============ -->
+      <div class="tool-card" id="su">
+        <span class="cat" style="color:var(--green-2)">Kiloya Dayalı Tahmin</span>
+        <h2>Günlük Su İhtiyacı</h2>
+        <p class="tool-desc">Yetişkinler için sık kullanılan 30–35 ml/kg aralığına göre tahmini günlük sıvı ihtiyacınız.</p>
+        <div class="tool-inputs">
+          <div class="field"><label for="su-kilo">Kilo (kg)</label><input id="su-kilo" type="number" inputmode="decimal" min="25" max="300" placeholder="Örn: 62" /></div>
+        </div>
+        <button class="btn btn-primary" data-calc="su">Hesapla</button>
+        <div class="tool-result" id="su-sonuc" hidden></div>
+        <div class="note-box tool-note">
+          <b>Not:</b> Bu sonuç yalnızca sizin girdiğiniz verilerle hesaplanmış genel bir aralıktır; sıcaklık,
+          egzersiz, gebelik/emzirme ve özellikle <b>böbrek veya kalp hastalıkları</b> ihtiyacı ciddi biçimde
+          değiştirir. Kronik hastalığınız varsa sıvı alımınızı hekiminize danışmadan artırmayınız; detaylı
+          değerlendirme için ilgili hastane birimine (Dahiliye/Nefroloji) başvurunuz.
+        </div>
+      </div>
+
+      <!-- ============ İDEAL KİLO ============ -->
+      <div class="tool-card" id="ideal-kilo">
+        <span class="cat" style="color:var(--copper)">Devine Formülü + DSÖ Aralığı</span>
+        <h2>İdeal Kilo Aralığı</h2>
+        <p class="tool-desc">Devine formülüne göre referans kilo ve DSÖ'nün sağlıklı VKİ aralığına (18,5–24,9) karşılık gelen kilo aralığı.</p>
+        <div class="tool-inputs">
+          <div class="field"><label for="ik-cins">Cinsiyet</label>
+            <select id="ik-cins"><option value="k">Kadın</option><option value="e">Erkek</option></select></div>
+          <div class="field"><label for="ik-boy">Boy (cm)</label><input id="ik-boy" type="number" inputmode="decimal" min="130" max="250" placeholder="Örn: 168" /></div>
+        </div>
+        <button class="btn btn-primary" data-calc="ideal">Hesapla</button>
+        <div class="tool-result" id="ideal-sonuc" hidden></div>
+        <div class="note-box tool-note">
+          <b>Not:</b> Bu sonuç yalnızca sizin girdiğiniz verilerle hesaplanmış istatistiksel bir referanstır;
+          "ideal" kilo kişinin kas kütlesi, yaşı ve sağlık öyküsüne göre değişir. Doğru bir hedef belirlemek
+          için lütfen bir hastanenin <b>Beslenme ve Diyet</b> birimine başvurunuz.
+        </div>
+      </div>
+
+      <!-- ============ BEL-BOY ============ -->
+      <div class="tool-card" id="bel-boy">
+        <span class="cat" style="color:var(--green-2)">Kardiyometabolik Risk Göstergesi</span>
+        <h2>Bel Çevresi / Boy Oranı</h2>
+        <p class="tool-desc">Karın bölgesi yağlanmasını değerlendiren, VKİ'yi tamamlayıcı bir ölçüt. Genel kural: "bel çevreniz boyunuzun yarısından az olsun."</p>
+        <div class="tool-inputs">
+          <div class="field"><label for="bb-bel">Bel çevresi (cm)</label><input id="bb-bel" type="number" inputmode="decimal" min="40" max="220" placeholder="Örn: 74" />
+            <span class="hint">Göbek deliği hizasından, nefes verdikten sonra ölçün.</span></div>
+          <div class="field"><label for="bb-boy">Boy (cm)</label><input id="bb-boy" type="number" inputmode="decimal" min="100" max="250" placeholder="Örn: 168" /></div>
+        </div>
+        <button class="btn btn-primary" data-calc="belboy">Hesapla</button>
+        <div class="tool-result" id="belboy-sonuc" hidden></div>
+        <div class="note-box tool-note">
+          <b>Not:</b> Bu sonuç yalnızca sizin girdiğiniz verilerle hesaplanmış bir orandır ve tek başına tanı
+          koydurmaz. Kalp-damar ve metabolik risklerinizin doğru değerlendirilmesi için lütfen bir hastanenin
+          <b>Kardiyoloji</b> veya <b>Dahiliye</b> birimine başvurunuz.
+        </div>
+      </div>
+
+      <div class="note-box" style="border-left-color:var(--green-2)">
+        <b>Genel uyarı:</b> Bu sayfadaki tüm araçlar bilgilendirme amaçlıdır; tanı ve tedavi yerine geçmez,
+        hekim veya diyetisyen görüşünün alternatifi değildir. 18 yaş altı, gebe/emziren kişiler ve kronik
+        hastalığı olanlar için formüller yanıltıcı olabilir.
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const num = (id: string) => {
+      const el = document.getElementById(id) as HTMLInputElement | null;
+      const v = el ? parseFloat(el.value.replace(',', '.')) : NaN;
+      return Number.isFinite(v) ? v : NaN;
+    };
+    const val = (id: string) => (document.getElementById(id) as HTMLSelectElement).value;
+    const show = (id: string, html: string) => {
+      const box = document.getElementById(id)!;
+      box.innerHTML = html;
+      box.hidden = false;
+    };
+    const err = (id: string) => show(id, '<p class="tool-err">Lütfen tüm alanları geçerli değerlerle doldurun.</p>');
+    const fmt = (n: number, d = 0) => n.toLocaleString('tr-TR', { maximumFractionDigits: d, minimumFractionDigits: d });
+
+    function vkiSinif(v: number) {
+      if (v < 18.5) return ['Zayıf (düşük kilolu)', 'var(--copper)'];
+      if (v < 25)   return ['Normal aralık', 'var(--green-2)'];
+      if (v < 30)   return ['Fazla kilolu', 'var(--copper)'];
+      if (v < 35)   return ['Obezite — Sınıf I', 'var(--copper)'];
+      if (v < 40)   return ['Obezite — Sınıf II', 'var(--copper)'];
+      return ['Obezite — Sınıf III', 'var(--copper)'];
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-calc]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const t = btn.dataset.calc;
+
+        if (t === 'vki') {
+          const boy = num('vki-boy') / 100, kilo = num('vki-kilo');
+          if (!boy || !kilo) return err('vki-sonuc');
+          const v = kilo / (boy * boy);
+          const [sinif, renk] = vkiSinif(v);
+          show('vki-sonuc',
+            `<div class="big">${fmt(v, 1)} <small>kg/m²</small></div>
+             <div class="tag" style="color:${renk}">${sinif}</div>
+             <p>DSÖ'ye göre yetişkinlerde sağlıklı aralık: <b>18,5 – 24,9 kg/m²</b>.</p>`);
+        }
+
+        if (t === 'kalori') {
+          const yas = num('kal-yas'), boy = num('kal-boy'), kilo = num('kal-kilo');
+          if (!yas || !boy || !kilo) return err('kalori-sonuc');
+          const bmh = 10 * kilo + 6.25 * boy - 5 * yas + (val('kal-cins') === 'e' ? 5 : -161);
+          const gunluk = bmh * parseFloat(val('kal-akt'));
+          show('kalori-sonuc',
+            `<div class="big">≈ ${fmt(gunluk)} <small>kcal/gün</small></div>
+             <p>Bazal metabolizma hızınız (dinlenme hâlinde): <b>≈ ${fmt(bmh)} kcal/gün</b>.
+             Kilo hedefi olan kişilerde bu değer üzerinden hekim/diyetisyen kontrolünde plan yapılır.</p>`);
+        }
+
+        if (t === 'su') {
+          const kilo = num('su-kilo');
+          if (!kilo) return err('su-sonuc');
+          show('su-sonuc',
+            `<div class="big">${fmt(kilo * 30 / 1000, 1)} – ${fmt(kilo * 35 / 1000, 1)} <small>litre/gün</small></div>
+             <p>Bunun bir kısmı yiyeceklerden (çorba, sebze, meyve) karşılanır; sıcak havada ve egzersizde ihtiyaç artar.</p>`);
+        }
+
+        if (t === 'ideal') {
+          const boyCm = num('ik-boy');
+          if (!boyCm) return err('ideal-sonuc');
+          const inc = boyCm / 2.54;
+          const devine = (val('ik-cins') === 'e' ? 50 : 45.5) + 2.3 * Math.max(0, inc - 60);
+          const m2 = (boyCm / 100) ** 2;
+          show('ideal-sonuc',
+            `<div class="big">${fmt(18.5 * m2, 1)} – ${fmt(24.9 * m2, 1)} <small>kg</small></div>
+             <div class="tag" style="color:var(--green-2)">DSÖ sağlıklı VKİ aralığına karşılık gelen kilo</div>
+             <p>Devine formülüne göre referans kilo: <b>≈ ${fmt(devine, 1)} kg</b> (ilaç dozu hesaplarında kullanılan istatistiksel değerdir).</p>`);
+        }
+
+        if (t === 'belboy') {
+          const bel = num('bb-bel'), boy = num('bb-boy');
+          if (!bel || !boy) return err('belboy-sonuc');
+          const o = bel / boy;
+          let yorum = '', renk = 'var(--green-2)';
+          if (o < 0.4) { yorum = 'Düşük oran — genellikle sorun değildir; belirgin kilo kaybı varsa hekime danışın.'; renk = 'var(--copper)'; }
+          else if (o < 0.5) { yorum = 'Sağlıklı aralık — bel çevreniz boyunuzun yarısının altında.'; }
+          else if (o < 0.6) { yorum = 'Artmış kardiyometabolik risk — yaşam tarzı değişikliği için değerlendirme önerilir.'; renk = 'var(--copper)'; }
+          else { yorum = 'Yüksek risk — bir sağlık kuruluşunda değerlendirme yaptırmanız önerilir.'; renk = 'var(--copper)'; }
+          show('belboy-sonuc',
+            `<div class="big">${fmt(o, 2)}</div>
+             <div class="tag" style="color:${renk}">${yorum}</div>
+             <p>Genel eşik: <b>0,50'nin altı</b> hedeflenir ("bel çevreniz boyunuzun yarısından az olsun").</p>`);
+        }
+      });
+    });
+  </script>
+</Base>

@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+import { getCollection } from 'astro:content';
+const urunler = await getCollection('urunler');
+const kategoriler = [...new Set(urunler.map(u => u.data.kategori))];
+---
+<Base title="Önerdiğim Ürün Kategorileri" description="Eczacı gözüyle, komisyonsuz ve tarafsız ürün kategorisi önerileri.">
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Kütüphane</p>
+          <h2>Önerdiğim ürün kategorileri</h2>
+          <p>Bu sayfada <b>marka ve satış linki yoktur</b>; komisyon alınmaz. Amaç, sosyal medyada sık sorulan
+          ürün gruplarını tarafsız biçimde açıklamaktır. Kişisel öneri için eczacınıza danışın.</p>
+        </div>
+        <Illust name="products" class="band-art" style="max-width:270px;margin:0" />
+      </div>
+      {kategoriler.map(k => (
+        <div style="margin-bottom:36px">
+          <h3 style="font-size:22px;margin-bottom:14px">{k}</h3>
+          <div class="grid three">
+            {urunler.filter(u => u.data.kategori === k).map(u => (
+              <div class="card">
+                <h3 style="font-size:18px">{u.data.ad}</h3>
+                <p>{u.data.aciklama}</p>
+                <span class="meta">{u.data.etiketler.map(t => <span class="pill">{t}</span>)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

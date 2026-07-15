@@ -1,0 +1,95 @@
+# Decap CMS — GitHub tabanlı içerik yönetimi
+# Kurulum: README.md > "Admin paneli" bölümüne bakın.
+# DecapBridge ile giriş — GitHub OAuth App kurmaya gerek yoktur.
+# decapbridge.com'da ücretsiz kayıt olup site ekleyin; size aşağıdaki
+# repo / identity_url / site_id değerlerini verir, buraya yapıştırın.
+backend:
+  name: git-gateway
+  repo: KULLANICI_ADI/REPO_ADI                      # DecapBridge panelinden alın
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/SITE_ID_BURAYA   # DecapBridge panelinden alın
+  gateway_url: https://gateway.decapbridge.com
+
+# Giriş ekranına logo (isteğe bağlı)
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+
+locale: 'tr'
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Blog Yazıları"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "select",
+          options: ["Cilt Bakımı", "Sağlık Okuryazarlığı", "Eczacılık & Kariyer", "Okuma & Üretkenlik", "Reçete Dışı Hayat", "Eko-Kimya & Sürdürülebilirlik"] }
+      - { label: "Tarih Etiketi (örn. Haziran 2026)", name: "dateLabel", widget: "string" }
+      - { label: "Yayın Tarihi", name: "pubDate", widget: "datetime" }
+      - { label: "Okuma Süresi", name: "readTime", widget: "string", default: "5 dk" }
+      - { label: "Özet", name: "excerpt", widget: "text" }
+      - { label: "Vurgu Rengi", name: "accent", widget: "color", default: "#2E6B4F" }
+      - { label: "Kapak Görseli", name: "cover", widget: "image", required: false }
+      - { label: "Taslak", name: "draft", widget: "boolean", default: false }
+      - { label: "İçerik", name: "body", widget: "markdown" }
+
+  - name: "soru-cevap"
+    label: "Eczacıya Sor (Yayınlanan)"
+    folder: "src/content/soru-cevap"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Soru (anonimleştirilmiş)", name: "question", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "string", default: "Genel" }
+      - { label: "Yayın Tarihi", name: "pubDate", widget: "datetime" }
+      - { label: "Cevap", name: "body", widget: "markdown" }
+
+  - name: "veri"
+    label: "Site Verileri"
+    files:
+      - name: "sozler"
+        label: "Sağlık & Yaşam Sözleri"
+        file: "src/data/sozler.json"
+        fields:
+          - label: "Sözler"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Söz", name: "text", widget: "text" }
+              - { label: "Yazar", name: "author", widget: "string", required: false }
+      - name: "urunler"
+        label: "Ürün Kütüphanesi"
+        file: "src/data/urunler.json"
+        fields:
+          - label: "Ürünler"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Kategori", name: "kategori", widget: "string" }
+              - { label: "Ad", name: "ad", widget: "string" }
+              - { label: "Açıklama", name: "aciklama", widget: "text" }
+              - { label: "Etiketler", name: "etiketler", widget: "list" }
+      - name: "takvim"
+        label: "Sağlık Takvimi"
+        file: "src/data/takvim.json"
+        fields:
+          - label: "Aylar"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID (ocak, subat...)", name: "id", widget: "string" }
+              - { label: "Ay", name: "ay", widget: "string" }
+              - { label: "Polen Durumu", name: "polen", widget: "text" }
+              - { label: "Mevsimsel Ürünler", name: "mevsimsel", widget: "list" }
+              - label: "Sağlık Günleri"
+                name: "saglikGunleri"
+                widget: "list"
+                fields:
+                  - { label: "Gün", name: "gun", widget: "string" }
+                  - { label: "Ad", name: "ad", widget: "string" }
+              - { label: "Eczacı Notu", name: "not", widget: "text", required: false }

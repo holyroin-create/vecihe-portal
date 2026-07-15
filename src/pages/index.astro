@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = posts.slice(0, 3);
+
+const AY_IDS = ['ocak','subat','mart','nisan','mayis','haziran','temmuz','agustos','eylul','ekim','kasim','aralik'];
+const takvim = await getCollection('takvim');
+const nowId = AY_IDS[new Date().getMonth()];
+const buAy = takvim.find(t => t.id === nowId)?.data;
+---
+<Base title="Ana Sayfa" activeNav="home">
+  <section class="band" style="border-top:none">
+    <div class="wrap page-hero">
+      <div class="page-hero-text">
+        <p class="eyebrow">Eczacı · Sağlık &amp; Yaşam</p>
+        <h1 class="page-title">Kanıta dayalı, sade ve yaşamın içinden bir sağlık portalı</h1>
+        <p class="lead">
+          Cilt bakımından sağlık okuryazarlığına, eczane tezgâhının arkasından okuma alışkanlıklarına —
+          abartısız, kaynağı belli yazılar ve pratik araçlar.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-accent" href="/rutin-sihirbazi">Rutin Sihirbazı'nı dene</a>
+          <a class="btn btn-primary" href="/eczaciya-sor">Eczacıya sor</a>
+        </div>
+      </div>
+      <Illust name="hero" class="page-hero-art" />
+    </div>
+    <div class="wrap">
+      <div class="trust-strip">
+        <div class="trust-item">
+          <span class="ico">✓</span>
+          <div><b>Kaynağı belli</b><span>Her yazının sonunda dayandığı klinik çalışmalar ve resmî öneriler listelenir.</span></div>
+        </div>
+        <div class="trust-item">
+          <span class="ico">℞</span>
+          <div><b>Eczacı kaleminden</b><span>İçerikler Biruni Üniversitesi Eczacılık Fakültesi mezunu bir eczacı tarafından yazılır.</span></div>
+        </div>
+        <div class="trust-item">
+          <span class="ico">⊘</span>
+          <div><b>Komisyonsuz &amp; tarafsız</b><span>Bu sitede satış linki ve sponsorlu ürün önerisi bulunmaz.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Öne Çıkanlar</p>
+          <h2>Son yazılar</h2>
+        </div>
+        <a class="btn btn-ghost" href="/blog">Tüm yazılar →</a>
+      </div>
+      <div class="grid three">
+        {featured.map(p => (
+          <a class="card" href={`/blog/${p.id}`}>
+            <div class="card-top" style={`background:linear-gradient(90deg, ${p.data.accent}, ${p.data.accent}55)`}></div>
+            <span class="cat" style={`color:${p.data.accent}`}>{p.data.category}</span>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.excerpt}</p>
+            <span class="meta">{p.data.dateLabel} · {p.data.readTime} okuma</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {buAy && (
+    <section class="band">
+      <div class="wrap">
+        <div class="band-head">
+          <div>
+            <p class="eyebrow">Mevsimsel Sağlık</p>
+            <h2>Bu ay: {buAy.ay}</h2>
+          </div>
+          <a class="btn btn-ghost" href="/takvim">Yıllık takvim →</a>
+        </div>
+        <div class="month-card current" style="max-width:720px">
+          <div class="row"><b>Polen/Alerji:</b><span>{buAy.polen}</span></div>
+          <div class="row"><b>Mevsiminde:</b>
+            <span>{buAy.mevsimsel.map(m => <span class="pill">{m}</span>)}</span>
+          </div>
+          {buAy.saglikGunleri.length > 0 && (
+            <div class="row"><b>Sağlık günleri:</b>
+              <span>{buAy.saglikGunleri.map(g => `${g.gun}${g.ad ? ' — ' + g.ad : ''}`).join(' · ')}</span>
+            </div>
+          )}
+          {buAy.not && <div class="row"><b>Eczacı notu:</b><span>{buAy.not}</span></div>}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Araçlar &amp; Köşeler</p>
+          <h2>Keşfet</h2>
+        </div>
+      </div>
+      <div class="grid two">
+        <a class="card" href="/araclar">
+          <span class="cat" style="color:var(--copper)">Hesaplayıcılar</span>
+          <h3>Sağlık Araçları</h3>
+          <p>VKİ, günlük kalori ve su ihtiyacı, ideal kilo aralığı, bel-boy oranı — resmî formüllerle, uyarı notlarıyla.</p>
+        </a>
+        <a class="card" href="/rutin-sihirbazi">
+          <span class="cat" style="color:var(--green-2)">İnteraktif</span>
+          <h3>Rutin Sihirbazı</h3>
+          <p>Cilt tipini ve şikâyetini seç, saniyeler içinde sana uygun sabah-akşam rutin iskeleti al.</p>
+        </a>
+        <a class="card" href="/eczaciya-sor">
+          <span class="cat" style="color:var(--copper)">Soru-Cevap</span>
+          <h3>Eczacıya Sor</h3>
+          <p>Merak ettiğini anonim olarak sor; yayınlanan cevaplar kütüphanede herkese açık kalsın.</p>
+        </a>
+        <a class="card" href="/urunler">
+          <span class="cat" style="color:var(--green-2)">Kütüphane</span>
+          <h3>Önerdiğim Ürün Kategorileri</h3>
+          <p>Sosyal medyada sorulan ürün gruplarının kategorize, komisyonsuz ve tarafsız listesi.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

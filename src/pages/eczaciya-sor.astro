@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+import { getCollection, render } from 'astro:content';
+const qas = (await getCollection('soru-cevap'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const rendered = await Promise.all(qas.map(async (q) => ({ q, Content: (await render(q)).Content })));
+const IG = "https://www.instagram.com/ecz.vecihebengisu/";
+---
+<Base title="Eczacıya Sor" activeNav="sor" description="Sağlıkla ilgili sorularınızı Instagram üzerinden sorun; yayınlanan cevaplar herkese açık kütüphanede birikir.">
+  <section class="band" style="border-top:none">
+    <div class="wrap" style="max-width:760px">
+      <Illust name="ask" class="band-art" />
+      <p class="eyebrow">Soru-Cevap Portalı</p>
+      <h2 style="margin:12px 0 14px">Eczacıya Sor</h2>
+      <p style="color:var(--ink-soft)">
+        Merak ettiğiniz genel sağlık ve cilt bakımı sorularını <b>Instagram üzerinden</b> iletebilirsiniz.
+        Uygun sorular anonimleştirilerek aşağıdaki kütüphanede yanıtlanır. Kişisel tıbbi durumlar (ilaç dozu,
+        tanı, reçeteli tedavi) buradan yanıtlanmaz; bu tür konular için lütfen hekiminize veya eczanenize
+        başvurun.
+      </p>
+
+      <div class="cta-panel">
+        <div>
+          <h3 style="margin:0 0 6px">Sorunuzu Instagram'dan gönderin</h3>
+          <p style="margin:0;color:var(--ink-soft);font-size:15px">
+            DM'den yazabilir ya da gönderilerin altına yorum bırakabilirsiniz. İsim vermeniz gerekmez.
+          </p>
+        </div>
+        <a class="btn btn-ig" href={IG} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram'dan sor
+        </a>
+      </div>
+
+      <div class="band-head" style="margin:44px 0 20px">
+        <div>
+          <p class="eyebrow">Kütüphane</p>
+          <h2 style="font-size:28px">Yanıtlanan sorular</h2>
+        </div>
+      </div>
+      {rendered.map(({ q, Content }) => (
+        <details class="qa-item">
+          <summary>{q.data.question}</summary>
+          <div class="qa-body"><Content /></div>
+        </details>
+      ))}
+    </div>
+  </section>
+</Base>

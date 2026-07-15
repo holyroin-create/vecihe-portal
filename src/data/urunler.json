@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": "u1",
+      "kategori": "Leke Karşıtı Rutin",
+      "ad": "C Vitamini Serumu (sabah)",
+      "aciklama": "Sabah rutininde antioksidan destek; güneş koruyucu ile birlikte kullanıldığında leke görünümüne katkı sağlar.",
+      "etiketler": [
+        "leke",
+        "antioksidan"
+      ]
+    },
+    {
+      "id": "u2",
+      "kategori": "Leke Karşıtı Rutin",
+      "ad": "Geniş Spektrumlu SPF 50",
+      "aciklama": "Leke rutininin vazgeçilmez adımı. Yeterli miktarda ve tekrar uygulamak, SPF sayısından daha önemli.",
+      "etiketler": [
+        "güneş",
+        "spf"
+      ]
+    },
+    {
+      "id": "u3",
+      "kategori": "Bariyer Onarımı",
+      "ad": "Seramidli Nemlendirici",
+      "aciklama": "Kuruluk ve hassasiyet dönemlerinde cilt bariyerini destekler; aktif kullanan ciltlerde tamponlama için idealdir.",
+      "etiketler": [
+        "bariyer",
+        "nemlendirici"
+      ]
+    },
+    {
+      "id": "u4",
+      "kategori": "Kış Takviyeleri",
+      "ad": "D Vitamini",
+      "aciklama": "Güneş görmeyen aylarda hekim/eczacı önerisiyle değerlendirilebilir; doz kişiye göre belirlenmelidir.",
+      "etiketler": [
+        "takviye",
+        "kış"
+      ]
+    },
+    {
+      "id": "u5",
+      "kategori": "Akne Eğilimli Cilt",
+      "ad": "Niasinamid %4-5 Serum",
+      "aciklama": "Sebum dengesi ve kızarıklık görünümü için kanıta dayalı, iyi tolere edilen bir seçenek.",
+      "etiketler": [
+        "akne",
+        "niasinamid"
+      ]
+    }
+  ]
+}

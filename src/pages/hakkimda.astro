@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import Illust from '../components/Illust.astro';
+
+const ilkeler = [
+  { baslik: 'Kaynağı belli', metin: 'Her yazının sonunda dayandığı çalışmalar ve resmî öneriler listelenir. "Bana güvenin" değil, "kaynağa bakın" derim.', renk: 'var(--green-2)' },
+  { baslik: 'Sade dil', metin: 'Bilimsel doğruluğu korurken jargonu eler, karmaşık mekanizmaları günlük hayatın diline çeviririm.', renk: 'var(--copper)' },
+  { baslik: 'Abartısız', metin: 'Mucize vaat etmem, korkutmam. Bir şeyin kanıtı zayıfsa "kanıtı zayıf" derim — bu da bir bilgidir.', renk: 'var(--green-2)' },
+  { baslik: 'Tarafsız', metin: 'Bu sitede satış linki ve komisyon yoktur. Önerilerim ürün gruplarına dairdir, markalara değil.', renk: 'var(--copper)' },
+];
+---
+<Base title="Hakkımda" activeNav="hakkimda" description="Ecz. Vecihe Bengisu — Biruni Üniversitesi Eczacılık Fakültesi mezunu. Doğru bilgiyi, anlaşılır biçimde.">
+  <section class="band" style="border-top:none">
+    <div class="wrap page-hero">
+      <div class="page-hero-text">
+        <p class="eyebrow">Hakkımda</p>
+        <h1 class="page-title">Doğru bilgiyi,<br/>anlaşılır biçimde.</h1>
+        <p class="lead">
+          Merhaba, ben <b>Vecihe Bengisu</b>. Biruni Üniversitesi Eczacılık Fakültesi mezunu bir
+          eczacıyım. Sağlık bilgisinin kalabalıklaştığı bir dönemde, doğru ve kaynağı belli bilgiyi
+          herkesin anlayabileceği sadelikte aktarmayı amaçlıyorum.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-ig" href="https://www.instagram.com/ecz.vecihebengisu/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram'da takip et
+          </a>
+          <a class="btn btn-ghost" href="/blog">Yazılarımı oku</a>
+        </div>
+      </div>
+      <Illust name="about" class="page-hero-art" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap" style="max-width:760px">
+      <h2 style="margin:0 0 18px">Özgeçmiş</h2>
+      <p style="color:var(--ink-soft)">
+        2001 yılında doğdum ve eczacılık eğitimimi Biruni Üniversitesi Eczacılık Fakültesi'nde tamamlayarak
+        eczacı unvanını aldım. Fakülte yıllarımdan itibaren farmakoloji, ilaç etkileşimleri ve kanıta dayalı
+        sağlık uygulamaları alanlarına özel bir ilgi geliştirdim; bu ilgi, mesleki yaklaşımımın temelini
+        oluşturdu.
+      </p>
+      <p style="color:var(--ink-soft)">
+        Meslek hayatım boyunca gözlemlediğim en belirgin sorun, insanların sağlıkla ilgili sorularının
+        çoğunlukla bilgi eksikliğinden değil, birbiriyle çelişen bilgi bolluğundan kaynaklanması oldu.
+        Doğru ile yanlışın, kanıtlanmış ile popüler olanın iç içe geçtiği bu ortamda; hastaların ve
+        danışanların güvenilir bir yön bulması giderek zorlaşıyor. Bu noktada kendime belirlediğim hedef,
+        karmaşık sağlık bilgisini bilimsel kaynaklara, klinik çalışmalara ve resmî sağlık otoritelerinin
+        güncel önerilerine dayandırarak herkesin anlayabileceği bir dile çevirmek.
+      </p>
+      <p style="color:var(--ink-soft)">
+        Bu yaklaşımı hem dijital platformlarda hem de bu portalda sürdürüyorum.
+        <a href="https://www.instagram.com/ecz.vecihebengisu/" target="_blank" rel="noopener" style="color:var(--green-2);font-weight:600">Instagram hesabımda</a>
+        güncel ve doğrulanmış kaynaklara dayanan bilgilendirici videolar paylaşıyor; sağlık okuryazarlığını
+        artırmayı ve yaygın yanlış inanışların önüne geçmeyi amaçlıyorum. Bu sitede ise söz konusu içerikleri
+        daha kalıcı ve derli toplu bir arşivde topluyor; yazıları, soru-cevap kütüphanesini ve pratik sağlık
+        araçlarını tek bir çatı altında bir araya getiriyorum.
+      </p>
+      <p style="color:var(--ink-soft)">
+        Amacım abartılı vaatler ya da korku söylemi değil; kaynağı belli, sade ve uygulanabilir bilgi
+        sunmak. Sağlıkla ilgili her kararın, ilgili sağlık profesyonelinin değerlendirmesiyle birlikte
+        alınması gerektiğine inanıyorum. Bu portaldaki içerikler de bu ilkeyi tamamlayıcı bir rehber
+        niteliği taşır.
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">Çalışma İlkelerim</p>
+          <h2>Bu sitede neye güvenebilirsiniz?</h2>
+        </div>
+      </div>
+      <div class="grid two">
+        {ilkeler.map(i => (
+          <div class="card">
+            <span class="cat" style={`color:${i.renk}`}>İlke</span>
+            <h3>{i.baslik}</h3>
+            <p>{i.metin}</p>
+          </div>
+        ))}
+      </div>
+      <div class="note-box" style="margin-top:30px">
+        Bu sitedeki içerikler bilgilendirme amaçlıdır; tanı ve tedavi yerine geçmez. Kişisel sağlık
+        durumunuz için lütfen hekiminize veya eczacınıza danışın.
+      </div>
+    </div>
+  </section>
+</Base>
